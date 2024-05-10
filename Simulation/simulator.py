@@ -7,7 +7,17 @@ import time
 import graph_search
 from random import randint
 
+'''
+validate function looks for evidence regarding the previous RA
 
+Input: 
+    evidences - list of evidences in the network
+    query - device to validate
+    timeFunction - min and max values for time validity
+    minReliability - reliability parameter to compare with the gotten trustScore
+Output:
+    status of validation - boolean 
+'''
 def validate(evidences, query, timeFunction, minReliability):
     if evidences[query] is not None:
         x = time.time() - evidences[query]
@@ -36,7 +46,8 @@ def validate(evidences, query, timeFunction, minReliability):
 
 
 if __name__ == '__main__':
-    minHit = 70
+
+    # get simulation parameters
     args = sys.argv[1:]
     if(len(args) != 5):
         print("Please provide args in following order: <systemType> <simType> <simRepetitions> <simDuration> <rate>")
@@ -46,22 +57,19 @@ if __name__ == '__main__':
     simulationDuration = int(args[3])
     rate = int(args[4])
     G = nx.DiGraph()
-    # initialization
-    # maximum searchdepth
+
+    # constants
+    minHit = 70
     securityParameter = 6
-
     minReliability = 0.80
-
     timeFunction = ['-0.0006666667*x + 1.2', 300, 600]
-
     nArray = [100, 200, 400, 600, 800, 1000]
     nArray2 = [2000, 3000, 4000, 5000, 7500, 10000, 15000, 20000, 25000]
-
     evidenceList = {}
-
     trustQueryHits = 0
     trustQueryMisses = 0
     attestations = 0
+
     for i in range(0, 6):
         n = nArray[i]
         # maximum number oft trustQueries per second
@@ -70,8 +78,8 @@ if __name__ == '__main__':
         evidenceList = {}
         pending = [None] * n
         G.clear()
-        for j in range(0, simRepetitions):
 
+        for j in range(0, simRepetitions):
             simulationStart = time.time()
             lastSecond = time.time()
             secondIterations = 0
@@ -85,7 +93,7 @@ if __name__ == '__main__':
                     while verifier == prover:
                         verifier = randint(0, n - 1)
                         prover = randint(0, n - 1)
-                    if systemType == "legiot":
+                    if systemType == "centralized":
                         pathFound, finalRating, entryPoint, path = graph_search.findOptimalPath(prover, verifier,
                                                                                                 securityParameter,
                                                                                                 minReliability,

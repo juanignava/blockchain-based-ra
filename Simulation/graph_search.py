@@ -18,8 +18,6 @@ Output:
     entryPoint - node the verifier needs to attest to enter the graph
     path - sequence of nodes that build the final path
 '''
-
-
 def findOptimalPath(proverID, verifierID, SecurityParameter, minReliability, EvidenceList, timeFunction):
     # Initialization of return values
     pathFound = False
@@ -113,7 +111,6 @@ Output:
     path - the final path
 '''
 
-
 def calculateEntry(visited, minReliability):
     candidates = []
     # print("length_visited: " + str(len(visited)))
@@ -161,8 +158,6 @@ Input:
 Output:
     trustScore - resulting edge trust score
 '''
-
-
 def calculateEdgeTrustScore(EvidenceList, evidence, timeFunction):
     x = time.time() - evidence[2]
     # print(x)
