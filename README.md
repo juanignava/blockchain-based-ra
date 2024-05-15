@@ -43,10 +43,11 @@ python3 simulator.py <simType> <simRepetitions> <simDuration> <rate>
 
 This is the meaning of the parameters:
 
--	***systemType*** :  	  The system you want to simulate (centralized or decentralized)
+- **systemType*** : The system you want to simulate (centralized or decentralized)
+
 - **simType**: The type of simulation (setup, run100 (iterations unit 100% hit rate), hitrate, maxquery)
 
-- **simRepetitions**: Repetitions of the siumlation for run100 . The maximum should be defined here.
+- **simRepetitions**: Repetitions of the siumlation for run100.
 
 - **sumDuration**: Maximum duration of each iteration of the simunlation.
 

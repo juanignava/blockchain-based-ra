@@ -39,7 +39,7 @@ def findOptimalPath(proverID, verifierID, SecurityParameter, minReliability, Evi
         # prover equals verifier
         pathFound = True
         finalRating = 1
-        # LOGGER.info('Verifier equals Prover')
+        # verifier equals Prover
         print("Vrf equals Prv")
         return pathFound, finalRating, entryPoint, path
 
@@ -49,20 +49,17 @@ def findOptimalPath(proverID, verifierID, SecurityParameter, minReliability, Evi
 
     # Expansion until maxDepth
     while currentDepth <= maxDepth:
-        # LOGGER.info('Expanding nodes for depth %s', currentDepth)
-        # print("currentDepth: " + str(currentDepth))
+        # Expanding nodes for depth currentDepth
         for node in Fringe:
-            # print("Node:" ,node)
             if not (node in EvidenceList):
-                # print("node not in EvidenceList")
-                # LOGGER.info('Evidence List is empty')
+                # Evidence List is empty
                 continue
             for evidence in EvidenceList[node]:
-                # print("EvidenceList[node]:", EvidenceList[node])
                 newScore = calculateEdgeTrustScore(EvidenceList, evidence, timeFunction)
-                # If evidences with a score of 0 are still contained, they are deleted now. Thus they must not be added to visited[]!
+                # If evidences with a score of 0 are still contained, they are deleted now. 
+                # they must not be added to visited[]!
                 if newScore == 0:
-                    # LOGGER.info('Continuing...')
+                    # Continuing
                     continue
                 if currentDepth == 1:
                     parentScore = newScore
@@ -81,16 +78,11 @@ def findOptimalPath(proverID, verifierID, SecurityParameter, minReliability, Evi
                 if (((evidence[0] in visited) == False) and (currentDepth < maxDepth)):
                     visited[evidence[0]] = [float(parentScore), currentDepth,
                                             ((str(visited[evidence[1]][2])) + ',' + str(evidence[0]))]
-                    # LOGGER.info('Writing visited key: %s - score: %s - depth: %s', evidence.VerifierIdentity, parentScore, currentDepth)
                     newFringe.append(evidence[0])
         Fringe.clear()
         Fringe.extend(newFringe)
         newFringe.clear()
         currentDepth += 1
-
-    # Debug: Print visited list after completion
-    # for node in visited:
-    # LOGGER.info('Key: %s, Value: %s', node, visited[node])
 
     # This part is only reached when no path between verifer and prover was found
     # Calculate the optimal entryPoint here:
@@ -113,12 +105,8 @@ Output:
 
 def calculateEntry(visited, minReliability):
     candidates = []
-    # print("length_visited: " + str(len(visited)))
-    # print(visited)
     # add all nodes that fulfill the minimal reliability requirement to the candidates list
     for key, value in visited.items():
-        # LOGGER.info('Node: %s ', node)
-        # print(value[0])
         if value[0] > minReliability:
             newCandidate = [key, value[0], value[1], value[2]]
             candidates.append(newCandidate)
@@ -126,9 +114,6 @@ def calculateEntry(visited, minReliability):
     candidates.sort(key=_getReliability, reverse=True)
     # now that candidates are sorted by decreasing reliability, sort them by depth:
     candidates.sort(key=_getDepth, reverse=True)
-    # LOGGER.info('Candidate found: %s out of all candidates: %s', candidates[0], candidates)
-    # print(len(candidates))
-    # print("candidates[0]_ID " + str(candidates[0][0]) + " candidates[0]_Rel " + str(candidates[0][1]) + " candidates[0]_Depth " + str(candidates[0][2]) + " candidates[0]_Path " + str(candidates[0][3]))
     return _getNodeID(candidates[0]), _getReliability(candidates[0]), _getPath(candidates[0])
 
 

@@ -21,7 +21,6 @@ Output:
 def validate(evidences, query, timeFunction, minReliability):
     if evidences[query] is not None:
         x = time.time() - evidences[query]
-        # print(x)
         timeFunc = timeFunction[0]
         xmin = timeFunction[1]
         xmax = timeFunction[2]
@@ -126,6 +125,7 @@ if __name__ == '__main__':
                     currentSecond = time.time()
                     sleepTime = (1 - (currentSecond - lastSecond))
                     time.sleep(sleepTime)
+
             if simType == "run100":
                 if trustQueryMisses == 0:
                     print("Report -----------------------------------------------------------------")
@@ -145,6 +145,7 @@ if __name__ == '__main__':
                     break
                 print(trustQueryHits+trustQueryMisses)
                 print("Iteration is finished !!! -----------------------------------------")
+            
             elif simType == "setup":
                 if trustQueryHits / (trustQueryHits + trustQueryMisses) * 100 >= minHit:
                     print("Report -----------------------------------------------------------------")
