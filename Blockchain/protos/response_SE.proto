@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-message response_SE {
-  string Result = 1;
-  string State = 2;
-}
-

@@ -93,14 +93,11 @@ def create_parser(prog_name):
                                            help='submit an attestation evidence',
                                            parents=[parent_parser])
     submitEvidence_subparser.add_argument('prvID',
-                                #type=string,
                                 help='Prover Public Key')
 
     submitEvidence_subparser.add_argument('measurement',
-                                #type=string,
                                 help='Measurement Value')
     submitEvidence_subparser.add_argument('BlockID',
-                                #type=string,
                                 help='BlockID Value')
 
                                 
@@ -108,17 +105,14 @@ def create_parser(prog_name):
                                            help='Query a trust link',
                                            parents=[parent_parser])
     trustQuery_subparser.add_argument('trustor',
-                                #type=string,
                                 help='The device to establish trust')	
     trustQuery_subparser.add_argument('trustee',
-                                #type=string,
                                 help='The device to be attested')
 
     trustQuery_subparser = subparsers.add_parser('checkRequest',
                                                  help='Check if there is a pending request',
                                                  parents=[parent_parser])
     trustQuery_subparser.add_argument('proverID',
-                                      # type=string,
                                       help='The device to establish trust')
 
     return parser

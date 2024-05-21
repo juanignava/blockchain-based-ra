@@ -40,12 +40,7 @@ from sawtooth_sdk.protobuf import events_pb2
 from sawtooth_sdk.protobuf import client_event_pb2
 from sawtooth_sdk.protobuf.validator_pb2 import Message
 
-# hard-coded for simplicity (otherwise get the URL from the args in main):
-# For localhost access:
-#DEFAULT_VALIDATOR_URL = 'tcp://localhost:4004'
-# For Docker access:
 DEFAULT_VALIDATOR_URL = 'tcp://validator:4004'
-# Calculated from the 1st 6 characters of SHA-512("attestation"):
 ATTESTATION_TP_ADDRESS_PREFIX = 'fadc96'
 
 
@@ -119,18 +114,7 @@ def listen_to_events(delta_filters=None):
                 trustQueryHits +=1
             elif (event.event_type == "attestation/entrypoint"):
                 trustQueryMisses +=1
-        
-    # Unsubscribe from events
-    request = client_event_pb2.ClientEventsUnsubscribeRequest()
-    msg = stream.send(Message.CLIENT_EVENTS_UNSUBSCRIBE_REQUEST,
-                      request.SerializeToString()).result()
-    assert msg.message_type == Message.CLIENT_EVENTS_UNSUBSCRIBE_RESPONSE
 
-    # Parse the unsubscribe response
-    response = client_event_pb2.ClientEventsUnsubscribeResponse()
-    response.ParseFromString(msg.content)
-    assert response.status == \
-           client_event_pb2.ClientEventsUnsubscribeResponse.OK
 
 def writeEdgeData(vrf, prv):
     alreadyContained = False

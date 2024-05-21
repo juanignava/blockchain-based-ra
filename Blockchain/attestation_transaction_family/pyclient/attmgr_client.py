@@ -16,9 +16,7 @@
 # Parts of code and comments contained in this file are taken from 
 # the official Hyperledger Sawtooth documentation
 # https://sawtooth.hyperledger.org/docs/core/releases/1.1.4/contents.html
-# and from example projects from developer ``danintel'':
-# https://github.com/danintel/sawtooth-cookiejar
-#
+
 '''
 AttestationManager class interfaces with Sawtooth through the REST API.
 It accepts input from a client CLI/GUI/BUI or other interface.
@@ -80,10 +78,7 @@ class AttestationManagerClient(object):
         self.client.subscribe(trustmngt_topic,0)
         self.client.loop_start()
         self.Answer = 'PENDING'
-        self.TX_ID=''
-        
-       
-        
+        self.TX_ID='' 
         
         if key_file is None:
             self._signer = None
@@ -164,7 +159,6 @@ class AttestationManagerClient(object):
     def on_message(self,mosq, obj, msg):
         m_decode = msg.payload.decode("utf-8", "ignore")
         m_in = json.loads(m_decode)  # decode json data
-       # print(m_in)
         Transaction_ID = m_in['Transaction_id']
         if Transaction_ID == self.TX_ID:
            self.Answer = m_in['Answer']
@@ -222,8 +216,6 @@ class AttestationManagerClient(object):
                     return result
 
             return "Time Out"
-            # return "Transaction timed out after waiting {} seconds." \
-            #    .format(wait)
         else:
             return result
 

@@ -16,9 +16,6 @@
 # Parts of code and comments contained in this file are taken from 
 # the official Hyperledger Sawtooth documentation
 # https://sawtooth.hyperledger.org/docs/core/releases/1.1.4/contents.html
-# and from example projects from developer ``danintel'':
-# https://github.com/danintel/sawtooth-cookiejar
-#
 '''
 Python package setup (used by Dockerfile).
 '''
@@ -29,7 +26,6 @@ setup(
     name='attmgr_cli',
     version='1.0',
     description='Sawtooth Attestation Manager',
-    author='Jens Neureither',
     url='',
     packages=find_packages(),
     install_requires=[

@@ -22,7 +22,6 @@ setup(
     name='attmgr_cli',
     version='1.0',
     description='Sawtooth Attestation Manager',
-    author='Jens Neureither',
     url='',
     packages=find_packages(),
     install_requires=[

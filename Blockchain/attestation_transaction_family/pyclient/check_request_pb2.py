@@ -61,9 +61,6 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 Checkrequest = _reflection.GeneratedProtocolMessageType('Checkrequest', (_message.Message,), dict(
   DESCRIPTOR = _CHECKREQUEST,
   __module__ = 'check_request_pb2'
-  # @@protoc_insertion_point(class_scope:Checkrequest)
   ))
 _sym_db.RegisterMessage(Checkrequest)
 
-
-# @@protoc_insertion_point(module_scope)

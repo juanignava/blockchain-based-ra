@@ -74,9 +74,6 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 Evidence = _reflection.GeneratedProtocolMessageType('Evidence', (_message.Message,), {
   'DESCRIPTOR' : _EVIDENCE,
   '__module__' : 'evidence_pb2'
-  # @@protoc_insertion_point(class_scope:Evidence)
   })
 _sym_db.RegisterMessage(Evidence)
 
-
-# @@protoc_insertion_point(module_scope)

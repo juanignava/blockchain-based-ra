@@ -18,16 +18,10 @@
 # Parts of code and comments contained in this file are taken from 
 # the official Hyperledger Sawtooth documentation
 # https://sawtooth.hyperledger.org/docs/core/releases/1.1.4/contents.html
-# and from example projects from developer ``danintel'':
-# https://github.com/danintel/sawtooth-cookiejar
-#
 '''Attestation Family event client
 
    To run, start the validator then type the following on the command line:
        ./events_client.py
-
-   For more information, see
-   https://sawtooth.hyperledger.org/docs/core/releases/latest/app_developers_guide/event_subscriptions.html
 '''
 
 import sys
@@ -38,9 +32,6 @@ from sawtooth_sdk.protobuf import events_pb2
 from sawtooth_sdk.protobuf import client_event_pb2
 from sawtooth_sdk.protobuf.validator_pb2 import Message
 
-# hard-coded for simplicity (otherwise get the URL from the args in main):
-# For localhost access:
-#DEFAULT_VALIDATOR_URL = 'tcp://localhost:4004'
 # For Docker access:
 DEFAULT_VALIDATOR_URL = 'tcp://validator:4004'
 

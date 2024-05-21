@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-message response_CR {
-  string Timestamp = 1;
-  int32 Result = 2;
-}
-

@@ -92,7 +92,7 @@ services:
     entrypoint: "bash -c \"sawtooth keygen --force admin1 && tail -f /dev/null\""
     command: |
       bash -c "
-        python "administration.py loadPolicyDB" && \
+        python3 "administration.py loadPolicyDB" && \
         ./administration.py loadAttestationPropertiesDB && \
         ./administration.py loadSystemConfig
       "

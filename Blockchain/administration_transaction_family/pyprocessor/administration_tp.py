@@ -16,9 +16,7 @@
 # Parts of code and comments contained in this file are taken from 
 # the official Hyperledger Sawtooth documentation
 # https://sawtooth.hyperledger.org/docs/core/releases/1.1.4/contents.html
-# and from example projects from developer ``danintel'':
-# https://github.com/danintel/sawtooth-cookiejar
-#
+
 '''
 AdministrationTransactionHandler class interfaces for Administration Transaction Family.
 '''
@@ -39,9 +37,6 @@ import systemconfig_pb2
 import device_pb2
 import Devicestate_pb2
 
-# hard-coded for simplicity (otherwise get the URL from the args in main):
-#DEFAULT_URL = 'tcp://localhost:4004'
-# For Docker:
 DEFAULT_URL = 'tcp://validator:4004'
 
 LOGGER = logging.getLogger(__name__)
@@ -163,15 +158,6 @@ def handleDevicesSubmission(context, payload):
                         state_data)
     addresses = context.set_state({address: state_data})
     LOGGER.info('List of Devices is stored')
-
-    # for Device in DeviceList:
-    #     Devicestate = Devicestate_pb2.DeviceState()
-    #     Devicestate.DeviceIdentity = Device.DeviceIdentity
-    #     address = _assembleAddress(Devicestate.DeviceIdentity)
-    #     state_data = Devicestate.SerializeToString()
-    #     addresses = context.set_state({address: state_data})
-    #     LOGGER.info('State saved for : %s',
-    #                 Devicestate.DeviceIdentity)
     return addresses
 
 
