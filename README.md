@@ -20,20 +20,35 @@ docker exec -it administration-client bash
 python3 administration.py loadSystemConfig ¬¬ python3 administration.py loadDeviceDB
 ```
 
-Now to execute the attesteaion, the mes container should run, use the following commands as an example.
+Now to execute the attesteaion, the mes container (prover) and erp container (verifier) can be used as a example.
+
+This are the possible commands that could be used:
+
+- The prover can check if it has pending requests
 
 ```
 docker exec -it mes bash
 python3 attmgr.py checkRequest 073B
 ```
 
+- The validator can query the blockchain to know the state of the prover
+
+```
+docker exec -it erp bash
+
+python3 attmgr.py trustQuery 098d 073B
+```
+
+- The prover can submit evidence if there is a request pending
+
+```
+python3 attmgr.py  submitEvidence 073B 7A09AB47D4 688e115dcbe148cfadb12af421a028fab25e94586a6906fcfb4818172bedd49d7d07bb33722d179901534e2824ef64e43cd88b7fb4c11f93cf86258b05d0fb47
+
+```
+
 ### Simulation
 
-First install the requierements for running the simulation
-
-```
-pip3 install -r requirements.txt
-```
+This simulation helps to compare the centralized from the decentralized implementation.
 
 Now you can run the simulation like this
 
