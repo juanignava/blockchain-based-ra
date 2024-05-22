@@ -18,9 +18,6 @@
 # Parts of code and comments contained in this file are taken from 
 # the official Hyperledger Sawtooth documentation
 # https://sawtooth.hyperledger.org/docs/core/releases/1.1.4/contents.html
-# and from example projects from developer ``danintel'':
-# https://github.com/danintel/sawtooth-cookiejar
-#
 '''Subscriber Event Client
    Subscribes to all events in the network.
    Can be used to output the current trust graph and count QueryHits and Misses.

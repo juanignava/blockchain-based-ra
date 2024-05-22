@@ -117,8 +117,6 @@ def create_parser(prog_name):
 
     return parser
 
-
-
 def CheckRequest(args):
     privkeyfile = _get_private_keyfile(KEY_NAME)
     client = AttestationManagerClient(broker=broker,port=port, device_id=args.proverID, key_file=privkeyfile)
@@ -134,8 +132,6 @@ def submit_evidence(args):
     encodedEvidence = buildEvidencePayload(args.prvID, args.measurement, args.BlockID)
     response = client.submitEvidence(encodedEvidence, args.prvID)
     print("Evidence Submission Result: {}".format(response))
-
-
 
 # Command to handle a trust query from the command line
 def trustQuery(args):
@@ -188,8 +184,6 @@ def main(prog_name=os.path.basename(sys.argv[0]), args=None):
     print("    CheckRequest 0794")
 
     try:
-        #if args is None:
-        #   args = sys.argv[1:]
 
         parser = create_parser(prog_name)
         args = parser.parse_args(args)

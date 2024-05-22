@@ -13,12 +13,6 @@
 # limitations under the License.
 # ------------------------------------------------------------------------------
 #
-# Parts of code and comments contained in this file are taken from 
-# the official Hyperledger Sawtooth documentation
-# https://sawtooth.hyperledger.org/docs/core/releases/1.1.4/contents.html
-# and from example projects from developer ``danintel'':
-# https://github.com/danintel/sawtooth-cookiejar
-#
 '''
 AdministrationManager class interfaces with Sawtooth through the REST API.
 It accepts input from a client CLI/GUI/BUI or other interface.
@@ -48,8 +42,6 @@ LOGGER = logging.getLogger(__name__)
 # The Transaction Family Name
 FAMILY_NAME = 'administration'
 
-
-# TF Prefix is first 6 characters of SHA-512("administration"), 5A7526
 
 def _hash(data):
     return hashlib.sha512(data).hexdigest()

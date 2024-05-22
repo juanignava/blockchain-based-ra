@@ -61,7 +61,7 @@ if __name__ == '__main__':
     minHit = 70
     securityParameter = 6
     minReliability = 0.80
-    timeFunction = ['-0.0006666667*x + 1.2', 300, 600]
+    timeFunction = ['-0.000667*x + 1.2', 300, 600]
     nArray = [100, 200, 400, 600, 800, 1000]
     nArray2 = [2000, 3000, 4000, 5000, 7500, 10000, 15000, 20000, 25000]
     evidenceList = {}
